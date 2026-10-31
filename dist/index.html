@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#11100e" />
+  <title>CrossTalk Live</title>
+  <meta name="description" content="An interruption-aware Hindi-English live translation demo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">C</span><span>CrossTalk</span></a>
+    <div class="room"><span class="live-dot"></span> Room <strong>ZERO-04</strong></div>
+    <button class="icon-button" id="helpBtn" aria-label="How it works">?</button>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div>
+        <p class="eyebrow">LIVE TRANSLATION LAB</p>
+        <h1>Disagree without<br><em>losing the point.</em></h1>
+      </div>
+      <div class="intro-copy">
+        <p>Two people. No shared language. Speak naturally, interrupt, correct yourself—the conversation keeps moving.</p>
+        <div class="status-line"><span id="engineDot"></span><span id="engineStatus">Checking browser speech services…</span></div>
+      </div>
+    </section>
+
+    <section class="conversation" aria-label="Two-person translated conversation">
+      <article class="speaker-card amber" data-side="a">
+        <div class="speaker-head">
+          <div><p>PERSON A</p><h2>Hindi</h2></div>
+          <select id="langA" aria-label="Person A language"><option value="hi-IN">हिन्दी · Hindi</option><option value="en-IN">English</option></select>
+        </div>
+        <div class="wave" id="waveA" aria-hidden="true"></div>
+        <div class="transcript-box">
+          <p class="label">HEARD</p>
+          <p class="original" id="originalA">Tap and hold to speak</p>
+          <p class="label translated-label">PERSON B HEARS</p>
+          <p class="translated" id="translatedA">Translation appears here</p>
+        </div>
+        <div class="composer">
+          <input id="textA" aria-label="Type as person A" placeholder="या यहाँ टाइप करें…" />
+          <button class="send" id="sendA" aria-label="Send typed message">↑</button>
+        </div>
+        <button class="talk" id="talkA"><span class="mic">●</span><span>Hold to speak · Chrome recommended</span></button>
+      </article>
+
+      <div class="middle-rail">
+        <span>ORIGINAL</span><div class="rail-line"></div><button id="swapBtn" aria-label="Swap languages">⇄</button><div class="rail-line"></div><span>TRANSLATED</span>
+      </div>
+
+      <article class="speaker-card blue" data-side="b">
+        <div class="speaker-head">
+          <div><p>PERSON B</p><h2>English</h2></div>
+          <select id="langB" aria-label="Person B language"><option value="en-IN">English</option><option value="hi-IN">हिन्दी · Hindi</option></select>
+        </div>
+        <div class="wave" id="waveB" aria-hidden="true"></div>
+        <div class="transcript-box">
+          <p class="label">HEARD</p>
+          <p class="original" id="originalB">Tap and hold to speak</p>
+          <p class="label translated-label">PERSON A HEARS</p>
+          <p class="translated" id="translatedB">Translation appears here</p>
+        </div>
+        <div class="composer">
+          <input id="textB" aria-label="Type as person B" placeholder="Or type here…" />
+          <button class="send" id="sendB" aria-label="Send typed message">↑</button>
+        </div>
+        <button class="talk" id="talkB"><span class="mic">●</span><span>Hold to speak · Chrome recommended</span></button>
+      </article>
+    </section>
+
+    <section class="timeline-section">
+      <div class="timeline-head"><div><p class="eyebrow">CONVERSATION MEMORY</p><h2>What was actually said</h2></div><button class="text-button" id="clearBtn">Clear transcript</button></div>
+      <div class="timeline" id="timeline"><div class="empty"><strong>No performance required.</strong><span>Use the microphone or type a line on either side. Try interrupting while translated audio is playing.</span></div></div>
+    </section>
+  </main>
+
+  <aside class="overlap" id="overlap"><strong>Overlap detected</strong><span>Both voices stay on separate tracks.</span></aside>
+  <dialog id="helpDialog"><button id="closeHelp" aria-label="Close">×</button><p class="eyebrow">HOW TO TEST</p><h2>Let the argument breathe.</h2><ol><li>Allow microphone access.</li><li>Hold either speak button and talk.</li><li>Interrupt from the other side while translated speech is playing.</li><li>Watch unstable words update and the final meaning settle.</li></ol><p class="fine">Chrome provides the best speech-recognition support. Translation uses the browser Translator API when available and a bounded Hindi–English demo dictionary otherwise.</p></dialog>
+  <script src="./app.js"></script>
+</body>
+</html>
