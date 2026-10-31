@@ -4,6 +4,8 @@ CrossTalk is a browser-first prototype for conversations between two people who 
 
 **Live demo:** https://crosstalk-live.mellowlion12.chatgpt.site
 
+![CrossTalk Live interface](screenshots/crosstalk-live.png)
+
 ## What the prototype demonstrates
 
 - Hindi and English speech recognition
